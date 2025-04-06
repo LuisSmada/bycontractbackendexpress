@@ -13,10 +13,11 @@
     "skipDefaultLibCheck": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "outDir": "./dist",
+    "outDir": "dist",
+    //"exclude": ["node_modules", "dist"],
     "strictPropertyInitialization": false,
     "paths": {
-      "~/*": ["./src/*"],
+      "*": ["src/*"],
       "~~/*": ["./*"]
     }
   },
