@@ -19,7 +19,7 @@ export const createUser = async (userDto: ICreateUserDTO) => {
   });
 
   if (existingUser) {
-    throw new Error("A uuser with this email already exists");
+    throw new Error("A user with this email already exists");
   }
 
   const newId = (await getLatestUserId()) + 1;
@@ -29,4 +29,16 @@ export const createUser = async (userDto: ICreateUserDTO) => {
   });
 
   return await users.insertOne(user);
+};
+
+export const getAllUsers = async () => {
+  return await users.find({}, { __v: 0, _id: 0, password: 0 });
+};
+
+export const getUserById = async (id: number) => {
+  return await users.findOne({ id: id }, { __v: 0, _id: 0, password: 0 });
+};
+
+export const deleteUserById = async (id: number) => {
+  return users.deleteOne({ id: id });
 };
